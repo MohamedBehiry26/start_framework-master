@@ -1,0 +1,34 @@
+<section
+  class="py-5 vh-100 d-flex flex-column justify-content-center align-items-center mt-5"
+>
+  <div class="mt-5">
+    <h2 class="text-center f-40 mt-5">CONTACT COMPONENT</h2>
+    <div
+      class="text-white d-flex align-items-center justify-content-center p-3"
+    >
+      <div class="line me-3"></div>
+      <i class="fa-solid fa-star" style="color: #183153"></i>
+      <div class="line ms-3"></div>
+    </div>
+  </div>
+  <div class="form col-12 col-md-8 col-lg-6">
+    @for (item of inputs; track $index) {
+    <div class="input p-3 position-relative">
+      <label
+        for="{{ inputs[$index] }}"
+        [class]="inputsGroup[$index].stat ? 'show-label' : ''"
+        >{{ inputs[$index] }}:</label
+      >
+      <input
+        id="{{ inputs[$index] }}"
+        type="text"
+        class="form-control border-0 border-bottom bg-transparent"
+        [(ngModel)]="inputsGroup[$index].inputName"
+        (keyup)="check($index)"
+      />
+    </div>
+    }
+
+    <button class="btn m-3">Send Message</button>
+  </div>
+</section>

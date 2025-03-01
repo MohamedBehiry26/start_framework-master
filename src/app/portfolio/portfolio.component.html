@@ -1,0 +1,46 @@
+<section
+  class="d-flex flex-column justify-content-center align-items-center py-5 position-relative mt-5"
+>
+  <div class="mt-5">
+    <h2 class="text-center f-40 mt-5">PORTFOLIO COMPONENT</h2>
+    <div
+      class="text-white d-flex align-items-center justify-content-center py-3"
+    >
+      <div class="line me-3"></div>
+      <i class="fa-solid fa-star" style="color: #183153"></i>
+      <div class="line ms-3"></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row g-5">
+      @for (item of images; track $index) {
+      <div class="col-md-6 col-lg-4">
+        <div class="img-container position-relative">
+          <img
+            src="{{ images[$index] }}"
+            alt="portfolio item"
+            class="img-fluid rounded"
+          />
+          <div
+            class="layer rounded d-flex justify-content-center align-items-center"
+            (click)="changeDisplay(images[$index])"
+          >
+            <i class="fa-solid fa-plus fa-6x text-white"></i>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div
+    [class]="
+      itsClicked
+        ? 'main-layer position-absolute top-0 d-flex justify-content-center align-items-center bg-black bg-opacity-75 w-100 h-100 position-fixed'
+        : 'd-none'
+    "
+    (click)="changeDisplay('')"
+  >
+    <img [src]="imgSrc" alt="portfolio item" class="img-fluid w-50" />
+  </div>
+</section>
